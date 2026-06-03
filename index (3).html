@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tech Portfolio - Nguyễn Văn A</title>
+    <style>
+        /* Cyber Tech & AI Premium UI Variables */
+        :root {
+            --bg-deep: #030308;        /* Nền tối không gian số sâu thẳm */
+            --bg-sidebar: #070714;     /* Màu nền thanh menu bên trái */
+            --bg-card: rgba(13, 13, 29, 0.7); /* Thẻ kính mờ cao cấp */
+            --primary-neon: #00ff88;   /* Xanh neon ma trận/AI */
+            --accent-blue: #00e1ff;    /* Xanh điện tử */
+            --text-primary: #f1f1f6;   /* Chữ trắng sáng đèn LED */
+            --text-secondary: #9ca3af; /* Chữ xám thông số kỹ thuật */
+            --border-glow: rgba(0, 255, 136, 0.15);
+            --sidebar-width: 280px;    /* Độ rộng của thanh menu trái */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
+            /* Thiết lập lưới background công nghệ */
+            background-image: 
+                linear-gradient(rgba(3, 3, 8, 0.96), rgba(3, 3, 8, 0.96)),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M80 0H0v80h80V0zM1 1h78v78H1V1z' fill='%2300ff88' fill-opacity='0.02'/%3E%3C/svg%3E");
+        }
+
+        /* -------------------------------
+           SIDEBAR MENU (THANH MENU TRÁI)
+        ---------------------------------- */
+        aside {
+            width: var(--sidebar-width);
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid rgba(0, 255, 136, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 25px;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .sidebar-brand {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--primary-neon);
+            text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+            letter-spacing: 1.5px;
+            margin-bottom: 50px;
+            padding-left: 10px;
+            border-left: 3px solid var(--accent-blue);
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .sidebar-menu li a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            padding: 14px 18px;
+            border-radius: 10px;
+            border: 1px solid transparent;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Hiệu ứng khi lướt qua menu trái */
+        .sidebar-menu li a:hover {
+            color: var(--primary-neon);
+            background: rgba(0, 255, 136, 0.04);
+            border-color: rgba(0, 255, 136, 0.2);
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.05);
+            transform: translateX(5px);
+        }
+
+        .sidebar-menu li a span {
+            font-family: 'Courier New', Courier, monospace;
+            margin-right: 12px;
+            color: var(--accent-blue);
+            font-size: 13px;
+        }
+
+        .sidebar-footer {
+            margin-top: auto;
+            font-size: 11px;
+            color: #4b5563;
+            text-align: center;
+            font-family: monospace;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            padding-top: 20px;
+        }
+
+        /* -------------------------------
+           MAIN CONTENT AREA (VÙNG NỘI DUNG)
+        ---------------------------------- */
+        .wrapper {
+            margin-left: var(--sidebar-width); /* Chừa chỗ cho menu trái */
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0; /* Sửa lỗi tràn layout trong flexbox */
+        }
+
+        /* Hero Banner */
+        .hero {
+            padding: 80px 50px 40px 50px;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: 60px;
+            width: 150px;
+            height: 150px;
+            background: rgba(0, 225, 255, 0.06);
+            border-radius: 50%;
+            filter: blur(50px);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--primary-neon) 0%, var(--accent-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 255, 136, 0.15);
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            max-width: 700px;
+        }
+
+        /* Container chính */
+        main {
+            padding: 20px 50px 80px 50px;
+        }
+
+        /* Thiết kế Section cao cấp */
+        section {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 45px;
+            margin-bottom: 50px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+
+        section:hover {
+            border-color: rgba(0, 255, 136, 0.35);
+            box-shadow: 0 20px 50px rgba(0, 255, 136, 0.06);
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 35px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 24px;
+            background: linear-gradient(to bottom, var(--primary-neon), var(--accent-blue));
+            border-radius: 3px;
+            box-shadow: 0 0 10px var(--primary-neon);
+        }
+
+        /* Grid nội dung giới thiệu */
+        .intro-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .intro-box {
+            background: rgba(255, 255, 255, 0.015);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 30px;
+            border-radius: 14px;
+            transition: background 0.3s;
+        }
+
+        .intro-box:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .intro-box h3 {
+            font-size: 17px;
+            color: var(--primary-neon);
+            margin-bottom: 18px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .intro-box ul {
+            list-style: none;
+        }
+
+        .intro-box ul li {
+            color: var(--text-secondary);
+            font-size: 14.5px;
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .intro-box ul li::before {
+            content: "•";
+            color: var(--accent-blue);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .intro-box ul li strong {
+            color: var(--text-primary);
+        }
+
+        /* -------------------------------
+           PROJECT MATRIX (DANH SÁCH BÀI TẬP)
+        ---------------------------------- */
+        .projects-info {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .projects-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .matrix-card {
+            background: rgba(10, 10, 22, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 30px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .matrix-card:hover {
+            transform: translateY(-6px);
+            background: rgba(16, 16, 35, 0.8);
+            border-color: var(--primary-neon);
+            box-shadow: 0 15px 35px rgba(0, 255, 136, 0.1);
+        }
+
+        /* Nhãn chỉ số công nghệ nhỏ góc thẻ */
+        .matrix-card::after {
+            content: "MODULE // ACTIVATED";
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-family: monospace;
+            font-size: 9px;
+            color: #3b82f6;
+            letter-spacing: 1px;
+            opacity: 0.5;
+        }
+
+        .matrix-card h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            padding-right: 40px;
+        }
+
+        .card-detail {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .card-detail strong {
+            color: var(--accent-blue);
+            display: block;
+            margin-bottom: 4px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-actions {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            gap: 12px;
+        }
+
+        .action-btn {
+            text-decoration: none;
+            color: var(--primary-neon);
+            font-size: 12px;
+            font-weight: 700;
+            font-family: monospace;
+            padding: 8px 16px;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            text-align: center;
+            flex: 1;
+        }
+
+        .action-btn:hover {
+            background: rgba(0, 255, 136, 0.08);
+            border-color: var(--primary-neon);
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+            color: #ffffff;
+        }
+
+        /* -------------------------------
+           CONCLUSION (TỔNG KẾT)
+        ---------------------------------- */
+        .summary-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .summary-block h3 {
+            font-size: 18px;
+            color: var(--accent-blue);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .summary-block ul {
+            list-style: none;
+        }
+
+        .summary-block ul li {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .summary-block ul li::before {
+            content: "✓";
+            color: var(--primary-neon);
+            position: absolute;
+            left: 2px;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: auto;
+            background-color: #020206;
+            padding: 35px 50px;
+            text-align: center;
+            font-size: 13px;
+            color: #4b5563;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        /* -------------------------------
+           RESPONSIVE DESIGN (CHO ĐIỆN THOẠI)
+        ---------------------------------- */
+        @media (max-width: 992px) {
+            body {
+                flex-direction: column;
+            }
+            aside {
+                position: static;
+                width: 100%;
+                padding: 30px 20px;
+                border-right: none;
+                border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+            }
+            .sidebar-brand {
+                margin-bottom: 25px;
+            }
+            .sidebar-menu {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .sidebar-menu li {
+                flex: 1;
+                min-width: 120px;
+            }
+            .sidebar-menu li a {
+                padding: 10px;
+                justify-content: center;
+            }
+            .wrapper {
+                margin-left: 0;
+            }
+            .hero {
+                padding: 40px 20px 20px 20px;
+                text-align: center;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            main {
+                padding: 20px;
+            }
+            section {
+                padding: 25px;
+            }
+            footer {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- THANH MENU BÊN TAY TRÁI (SIDEBAR) -->
+    <aside>
+        <div class="sidebar-brand">CORE_SYSTEM v3.0</div>
+        <ul class="sidebar-menu">
+            <li><a href="#gioi-thieu"><span>01 //</span> Tổng quan</a></li>
+            <li><a href="#du-an"><span>02 //</span> Kho Bài Tập</a></li>
+            <li><a href="#tong-ket"><span>03 //</span> Phân Tích</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            [SYS_STATUS: ONLINE]
+        </div>
+    </aside>
+
+    <!-- TOÀN BỘ VÙNG NỘI DUNG BÊN PHẢI -->
+    <div class="wrapper">
+        
+        <!-- Header Hero Banner -->
+        <header class="hero">
+            <h1>PORTFOLIO SỐ HÓA CÁ NHÂN</h1>
+            <p>Nền tảng lưu trữ kiến trúc dữ liệu học tập, phát triển năng lực công nghệ và thích ứng môi trường trí tuệ nhân tạo.</p>
+        </header>
+
+        <!-- Khối nội dung chính -->
+        <main>
+
+            <!-- SECTION 1: GIỚI THIỆU -->
+            <section id="gioi-thieu">
+                <h2>01 / HỒ SƠ ĐỊNH DANH SỐ</h2>
+                <div class="intro-container">
+                    
+                    <div class="intro-box">
+                        <h3>Thông tin cá nhân</h3>
+                        <ul>
+                            <li><strong>Họ và tên học viên:</strong> Nguyễn Văn A <!-- Thay thế thông tin thật tại đây --></li>
+                            <li><strong>Chuyên ngành đào tạo:</strong> Công nghệ thông tin / Chuyển đổi số</li>
+                            <li><strong>Năng lực số chính:</strong> Thiết lập prompt AI, Quản trị không gian đám mây, Thiết kế giao diện Web.</li>
+                        </ul>
+                    </div>
+
+                    <div class="intro-box">
+                        <h3>Lộ trình chiến lược</h3>
+                        <ul>
+                            <li>Nghiên cứu sâu kỹ năng tương tác và kết hợp chuyên sâu cùng Trí tuệ nhân tạo.</li>
+                            <li>Xây dựng tư duy số linh hoạt, chủ động giải quyết các bài toán công nghệ.</li>
+                            <li>Tối ưu hóa hiệu suất học tập thông qua các công cụ tự động hóa thông minh.</li>
+                        </ul>
+                    </div>
+
+                    <div class="intro-box">
+                        <h3>Mục tiêu Portfolio</h3>
+                        <ul>
+                            <li>Hệ thống chứng thực năng lực thực hành công nghệ qua chuỗi sản phẩm thực tế.</li>
+                            <li>Tạo lập không gian lưu trữ trực tuyến tối giản, khoa học và bảo mật cao.</li>
+                            <li>Định hình phong cách dấu ấn thương hiệu cá nhân chuyên nghiệp kỷ nguyên số.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- SECTION 2: DỰ ÁN MATRIX -->
+            <section id="du-an">
+                <h2>02 / MATRIX BÀI TẬP DỰ ÁN</h2>
+                <p class="projects-info">Hệ thống đồng bộ dữ liệu bao gồm 06 module bài tập cốt lõi đã hoàn thành đầy đủ:</p>
+                
+                <div class="projects-matrix">
+                    
+                    <!-- Bài tập 1 -->
+                    <div class="matrix-card">
+                        <h4>Bài tập 1 - Bài 1: Máy tính & Thiết bị ngoại vi</h4>
+                        <div class="card-detail">
+                            <strong>Mục tiêu cốt lõi:</strong> Làm chủ cấu trúc hạ tầng phần cứng cá nhân và cơ chế đồng bộ linh kiện ngoại vi thông minh.
+                        </div>
+                        <div class="card-detail">
+                            <strong>Tiến trình xử lý:</strong> Phân tích hiệu năng, phân loại thiết bị đầu vào/ra và lập phương án cấu hình phần cứng tối ưu.
+                        </div>
+                        <div class="card-actions">
+                            <a href="san-pham/bai-tap-1.pdf" target="_blank" class="action-btn">FILE_PDF</a>
+                            <a href="#" class="action-btn">HARDWARE_IMG</a>
+                        </div>
+                    </div>
+
+                    <!-- Bài tập 2 -->
+                    <div class="matrix-card">
+                        <h4>Bài tập 2 - Bài 2: Khai thác dữ liệu & Thông tin</h4>
+                        <div class="card-detail">
+                            <strong>Mục tiêu cốt lõi:</strong> Thành thạo thuật toán lọc thông tin nâng cao và thẩm định độ tin cậy của các nguồn học thuật trực tuyến.
+                        </div>
+                        <div class="card-detail">
+                            <strong>Tiến trình xử lý:</strong> Ứng dụng cú pháp tìm kiếm chuyên sâu, trích xuất dữ liệu thô và cấu trúc hóa báo cáo tổng hợp.
+                        </div>
+                        <div class="card-actions">
+                            <a href="san-pham/bai-tap-2.pdf" target="_blank" class="action-btn">FILE_PDF</a>
+                            <a href="#" class="action-btn">DATA_SOURCE</a>
+                        </div>
+                    </div>
+
+                    <!-- Bài tập 3 -->
+                    <div class="matrix-card">
+                        <h4>Bài tập 2 - Bài 3: Tổng quan về Trí tuệ nhân tạo</h4>
+                        <div class="card-detail">
+                            <strong>Mục tiêu cốt lõi:</strong> Tiếp cận nguyên lý vận hành của AI và làm chủ kỹ nghệ thiết lập câu lệnh (Prompt Engineering).
+                        </div>
+                        <div class="card-detail">
+                            <strong>Tiến trình xử lý:</strong> Trải nghiệm tích hợp đa mô hình ngôn ngữ lớn (LLMs), tối ưu hóa quy trình xử lý văn bản tự động.
+                        </div>
+                        <div class="card-actions">
+                            <a href="san-pham/bai-tap-3.pdf" target="_blank" class="action-btn">FILE_PDF</a>
+                            <a href="#" class="action-btn">VIDEO_DEMO</a>
+                        </div>
+                    </div>
+
+                    <!-- Bài tập 4 -->
+                    <div class="matrix-card">
+                        <h4>Bài tập 3 - Bài 4: Giao tiếp & Hợp tác số</h4>
+                        <div class="card-detail">
+                            <strong>Mục tiêu cốt lõi:</strong> Vận hành không gian làm việc đám mây và kỹ năng quản lý dự án linh hoạt từ xa theo nhóm.
+                        </div>
+                        <div class="card-detail">
+                            <strong>Tiến trình xử lý:</strong> Thiết lập luồng tài liệu dùng chung thời gian thực, đồng bộ hóa lịch trình tác vụ nhóm.
+                        </div>
+                        <div class="card-actions">
+                            <a href="san-pham/bai-tap-4.pdf" target="_blank" class="action-btn">FILE_PDF</a>
+                            <a href="#" class="action-btn">CLOUD_ROOM</a>
+                        </div>
+                    </div>
+
+                    <!-- Bài tập 5 -->
+                    <div class="matrix-card">
+                        <h4>Bài tập 2 - Bài 5: Sáng tạo nội dung số</h4>
+                        <div class="card-detail">
+                            <strong>Mục tiêu cốt lõi:</strong> Ứng dụng tư duy thẩm mỹ hiện đại và các công cụ đa phương tiện để xuất bản ấn phẩm truyền thông số.
+                        </div>
+                        <div class="card-detail">
+                            <strong>Tiến trình xử lý:</strong> Xây dựng kịch bản phân cảnh, xử lý biên tập hình ảnh/video kỹ thuật số đa kênh.
+                        </div>
+                        <div class="card-actions">
+                            <a href="san-pham/bai-tap-5.pdf" target="_blank" class="action-btn">FILE_PDF</a>
+                            <a href="#" class="action-btn">MEDIA_ASSETS</a>
+                        </div>
+                    </div>
+
+                    <!-- Bài tập 6 -->
+                    <div class="matrix-card">
+                        <h4>Bài tập 4 - Bài 6: An toàn & Liêm chính học thuật</h4>
+                        <div class="card-detail">
+                            <strong>Mục tiêu cốt lõi:</strong> Thấu hiểu sâu sắc luật sở hữu trí tuệ, cơ chế bảo vệ quyền tác giả và quản trị an toàn danh tính trực tuyến.
+                        </div>
+                        <div class="card-detail">
+                            <strong>Tiến trình xử lý:</strong> Áp dụng quy chuẩn trích dẫn APA/IEEE, triển khai hệ thống xác thực hai lớp và mã hóa dữ liệu.
+                        </div>
+                        <div class="card-actions">
+                            <a href="san-pham/bai-tap-6.pdf" target="_blank" class="action-btn">FILE_PDF</a>
+                            <a href="#" class="action-btn">INTEGRITY_CHECK</a>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- SECTION 3: TỔNG KẾT -->
+            <section id="tong-ket">
+                <h2>03 / PHÂN TÍCH & ĐÁNH GIÁ CHIẾN LƯỢC</h2>
+                <div class="summary-wrapper">
+                    
+                    <div class="summary-block">
+                        <h3>Trải nghiệm & Cảm nhận cá nhân</h3>
+                        <ul>
+                            <li>Mô hình xây dựng Portfolio tự viết mã nguồn giúp làm chủ hoàn toàn cấu trúc hiển thị thông tin mà không bị gò bó bởi các khuôn mẫu kéo thả.</li>
+                            <li>Tạo ra thói quen lưu trữ và phân loại các sản phẩm số hóa một cách bài bản, sẵn sàng phục vụ cho nhu cầu thực tế công việc tương lai.</li>
+                        </ul>
+                    </div>
+
+                    <div class="summary-block">
+                        <h3>Kỹ năng cốt lõi được củng cố</h3>
+                        <ul>
+                            <li>Năng lực phát triển mã nguồn front-end tối ưu kết hợp bố cục menu sidebar linh hoạt.</li>
+                            <li>Tư duy cộng tác thông minh cùng các trợ lý trí tuệ nhân tạo để nâng cấp giao diện thẩm mỹ và xử lý lỗi code thời gian thực.</li>
+                            <li>Ý thức sâu sắc về việc bảo mật thông tin an toàn trên không gian mạng và liêm chính dữ liệu học thuật.</li>
+                        </ul>
+                    </div>
+
+                    <div class="summary-block">
+                        <h3>Điểm tâm đắc nhất & Giải pháp vượt khó khăn</h3>
+                        <ul>
+                            <li><strong>Điểm tâm đắc:</strong> Hoàn thiện một đồ án Portfolio cá nhân chuẩn giao diện AI/Cyber Tech cao cấp tích hợp menu điều hướng thông minh bên tay trái, triển khai vận hành ổn định trên đám mây GitHub.</li>
+                            <li><strong>Thách thức & Giải pháp:</strong> Khó khăn lớn nhất nằm ở việc thiết kế bố cục sidebar sao cho tự động co giãn, biến đổi mượt mà khi chuyển từ màn hình máy tính sang điện thoại di động (Responsive design). Tuy nhiên, qua việc nghiên cứu cơ chế `Media Queries` của CSS, bài toán đã được xử lý tối ưu.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer Công nghệ -->
+        <footer>
+            <p>© 2026 :: Toàn bộ hệ thống giao diện và mã nguồn được cấu trúc bởi Học viên.</p>
+            <p style="font-size: 11px; margin-top: 5px; color: #3b3d4a;">Powered by GitHub Pages Premium Deployment.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
